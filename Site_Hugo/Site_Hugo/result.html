@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Final</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #1e1e1e;
+        }
+
+        table th, table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        table th {
+            background-color: #333333;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        table tr:hover {
+            background-color: #3a3a3a;
+        }
+
+        table td {
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+
+        table th {
+            position: sticky;
+            top: 0;
+            background-color: #333333;
+            z-index: 1;
+        }
+
+        /* Estilo para notas abaixo de 60 */
+        .low-grade {
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado Final</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Aluno</th>
+                    <th>Turma</th>
+                    <th>Matemática</th>
+                    <th>Português</th>
+                    <th>Ciências</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaAlunos">
+                <!-- Os dados dos alunos serão inseridos aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alunos = JSON.parse(localStorage.getItem('alunos'));
+            const tabela = document.getElementById('tabelaAlunos');
+
+            alunos.forEach(aluno => {
+                const row = tabela.insertRow();
+
+                row.insertCell(0).textContent = aluno.nome;
+                row.insertCell(1).textContent = aluno.turma;
+
+                // Matematica
+                const cellMatematica = row.insertCell(2);
+                cellMatematica.textContent = aluno.disciplinas.Matematica;
+                if (aluno.disciplinas.Matematica < 60) {
+                    cellMatematica.classList.add('low-grade');
+                }
+
+                // Portugues
+                const cellPortugues = row.insertCell(3);
+                cellPortugues.textContent = aluno.disciplinas.Portugues;
+                if (aluno.disciplinas.Portugues < 60) {
+                    cellPortugues.classList.add('low-grade');
+                }
+
+                // Ciencias
+                const cellCiencias = row.insertCell(4);
+                cellCiencias.textContent = aluno.disciplinas.Ciencias;
+                if (aluno.disciplinas.Ciencias < 60) {
+                    cellCiencias.classList.add('low-grade');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Escolar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestão Escolar</h1>
+        <div id="formularioCadastro">
+            <h2>Cadastro de Aluno, Turma, Disciplinas e Notas</h2>
+            <form>
+                <label for="nomeAluno">Nome do Aluno:</label>
+                <input type="text" id="nomeAluno" required>
+
+                <label for="nomeTurma">Nome da Turma:</label>
+                <input type="text" id="nomeTurma" required>
+
+                <label for="notaMatematica">Nota de Matemática:</label>
+                <input type="number" id="notaMatematica" required>
+
+                <label for="notaPortugues">Nota de Português:</label>
+                <input type="number" id="notaPortugues" required>
+
+                <label for="notaCiencias">Nota de Ciências:</label>
+                <input type="number" id="notaCiencias" required>
+
+                <button type="button" onclick="adicionarAluno()">Adicionar Aluno</button>
+            </form>
+            <button id="finalizarButton" onclick="finalizarCadastro()">Finalizar Notas</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
